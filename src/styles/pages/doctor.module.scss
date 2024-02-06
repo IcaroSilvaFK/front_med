@@ -1,0 +1,52 @@
+@import "../colors";
+
+.container {
+  flex: 1;
+  padding: 0 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  header {
+    margin-top: 70px;
+  }
+
+  > form {
+    margin-top: 28px;
+    flex: 1;
+    display: flex;
+    gap: 12px;
+
+    > div:first-child {
+      flex: 1;
+    }
+
+    .input__file {
+      border: 1.5px dashed $primaryMain;
+      border-radius: 26px;
+      max-width: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 272px;
+
+      > input {
+        display: none;
+      }
+
+      > div {
+        padding: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+
+  > footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 22px;
+  }
+}

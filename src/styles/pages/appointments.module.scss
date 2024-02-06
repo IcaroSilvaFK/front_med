@@ -1,0 +1,13 @@
+@import "../colors";
+
+.container {
+  flex: 1;
+  padding: 30px 16px;
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+  }
+}

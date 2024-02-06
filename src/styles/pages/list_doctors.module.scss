@@ -1,0 +1,21 @@
+@import "../colors";
+
+.container {
+  padding: 16px;
+  flex: 1;
+
+  > header {
+    height: 70px;
+    border-bottom: 1px solid $gray100;
+  }
+
+  > section {
+    margin-top: 32px;
+    padding-bottom: 22px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+  }
+}

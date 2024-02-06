@@ -1,0 +1,40 @@
+@import "../colors";
+
+.container {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: flex-end;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    padding: 86px 25px;
+    background: $white;
+
+    z-index: 1;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: $shadowBase 0px 3px 8px;
+    max-width: 450px;
+    width: 100%;
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      > footer {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
