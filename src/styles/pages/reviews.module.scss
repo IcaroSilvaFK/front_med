@@ -1,0 +1,13 @@
+@import "../colors";
+@import "../mixins";
+
+.container {
+  @include basePaddingSectionMain(30px, 16px);
+  flex: 1;
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 12px;
+  }
+}

@@ -1,10 +1,11 @@
 import { CardDoctor } from "@/components/molecules";
+import Link from "next/link";
+import { Add, Search } from "@mui/icons-material";
+import { InputAdornment, Stack, TextField } from "@mui/material";
+
+import { Button } from "@/components/atoms";
 
 import styles from "../../../../styles/pages/list_doctors.module.scss";
-import { InputAdornment, Stack, TextField } from "@mui/material";
-import { Add, Search } from "@mui/icons-material";
-import { Button } from "@/components/atoms";
-import Link from "next/link";
 
 export default function List() {
   return (
@@ -41,7 +42,12 @@ export default function List() {
         </Stack>
         <div className={styles.grid}>
           {Array.from({ length: 100 }).map((_, idx) => (
-            <CardDoctor key={idx} />
+            <CardDoctor
+              key={idx.toString()}
+              crm="5545 - 2655"
+              specialty="Cirurgia"
+              name={`Icaro ${idx}`}
+            />
           ))}
         </div>
       </section>

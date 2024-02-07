@@ -11,6 +11,7 @@ import {
 
 import styles from "./styles.module.scss";
 import { NumberUtil } from "@/utils/Number.util";
+import Image from "next/image";
 
 type Props = {
   sidebarIsOpen: boolean;
@@ -107,7 +108,7 @@ export function SideBarSchedulingExam(props: Props) {
             <Typography fontSize={12} color="GrayText">
               Agendado para
             </Typography>
-            <Stack direction="row">
+            <Stack direction="row" spacing={0.5}>
               <CalendarMonth color="primary" />
               <Typography fontWeight="bold" variant="body1">
                 01/02/2024
@@ -142,9 +143,17 @@ export function SideBarSchedulingExam(props: Props) {
             <Typography fontSize={12} color="GrayText">
               Forma de pagamento
             </Typography>
-            <Typography color="primary" fontWeight="bold" variant="body1">
-              Pix
-            </Typography>
+            <Stack direction="row" alignItems="center" spacing={0.5}>
+              <Image
+                src="/assets/unimed-logo.png"
+                alt="Unimed"
+                width={20}
+                height={20}
+              />
+              <Typography fontWeight="bold" variant="body1">
+                Unimed
+              </Typography>
+            </Stack>
           </Stack>
           <Stack>
             <Typography fontSize={12} color="GrayText">
@@ -166,7 +175,7 @@ export function SideBarSchedulingExam(props: Props) {
             <Typography fontSize={12} color="GrayText">
               N° do agendamento
             </Typography>
-            <Typography color="primary" fontWeight="bold" variant="body1">
+            <Typography fontWeight="bold" variant="body1">
               5489-6625
             </Typography>
           </Stack>
