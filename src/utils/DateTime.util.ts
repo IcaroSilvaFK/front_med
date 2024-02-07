@@ -20,7 +20,16 @@ export class DateTimeUtil {
   }
 
   static formatDayOfWeek(day: Date) {
-    return new Intl.DateTimeFormat("pt-BR", { weekday: "short" }).format(day)
+    return this.format(day, { weekday: "short" })
+  }
+
+  static formatDate(date: Date) {
+    return this.format(date)
+  }
+
+  private static format(value: Date, opts?: Intl.DateTimeFormatOptions) {
+    return new Intl.DateTimeFormat('pt-BR', opts).format(value);
+
   }
 
 }
