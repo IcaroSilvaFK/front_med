@@ -1,66 +1,20 @@
 "use client";
 
-import { Button } from "@/components/atoms";
+import { Button, InputDropFile } from "@/components/atoms";
 import styles from "../../../../styles/pages/doctor.module.scss";
-import { AddPhotoAlternate, KeyboardArrowLeft } from "@mui/icons-material";
+import { KeyboardArrowLeft } from "@mui/icons-material";
 import {
   Autocomplete,
   MenuItem,
   Select,
   Stack,
   TextField,
-  Typography,
 } from "@mui/material";
-import { ChangeEvent, useCallback, useEffect, useId, useState } from "react";
-import Image from "next/image";
+
+import { useFileFieldMethods } from "@/hooks";
 
 export default function Page() {
-  const inputFileId = useId();
-
-  const [image, setImage] = useState<string | null>(null);
-
-  useEffect(() => {
-    window.addEventListener(
-      "drop",
-      (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-      },
-      false
-    );
-    window.addEventListener(
-      "dragover",
-      (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-      },
-      false
-    );
-  }, []);
-
-  const onDropImage = (fileList: FileList) => {
-    const file = fileList[0];
-
-    readFile(file);
-  };
-
-  const onSelectImage = (e: ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    const file = files?.length ? files[0] : null;
-
-    if (file) {
-      readFile(file);
-    }
-  };
-
-  const readFile = useCallback((file: File) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      setImage(reader.result as string);
-    };
-
-    reader.readAsDataURL(file);
-  }, []);
+  const { image, onSelectImage, onDropImage } = useFileFieldMethods();
 
   return (
     <section className={styles.container}>
@@ -97,43 +51,12 @@ export default function Page() {
             )}
           />
         </Stack>
-        <label
-          htmlFor={inputFileId}
+        <InputDropFile
+          onDropImage={onDropImage}
+          onSelectImage={onSelectImage}
+          image={image}
           className={styles.input__file}
-          onDrop={(data) => onDropImage(data.dataTransfer.files)}
-        >
-          {!image && (
-            <div>
-              <AddPhotoAlternate fontSize="large" />
-              <Typography variant="body1" textAlign="center">
-                <Typography
-                  variant="body1"
-                  component="span"
-                  fontWeight="bold"
-                  color="primary.main"
-                >
-                  Faça o upload de uma imagem
-                </Typography>{" "}
-                ou arraste e solte PNG, JPG de até 10MB
-              </Typography>
-            </div>
-          )}
-          {image && (
-            <Image
-              src={image}
-              alt="Uploaded image"
-              width={350}
-              height={272}
-              objectFit="contain"
-            />
-          )}
-          <input
-            type="file"
-            name="file"
-            id={inputFileId}
-            onChange={onSelectImage}
-          />
-        </label>
+        />
       </form>
       <footer>
         <Button variant="contained" type="submit" size="large">

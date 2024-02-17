@@ -1,0 +1,47 @@
+@import "../../../styles/colors";
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex: 1;
+
+  .input__file {
+    border: 1.5px dashed $primaryMain;
+    overflow: hidden;
+    border-radius: 26px;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+
+    > input {
+      display: none;
+    }
+
+    > div {
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+
+  .grid__form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    flex: 1;
+    margin-top: 22px;
+    width: 100%;
+  }
+
+  > footer {
+    margin: 22px 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+}

@@ -5,11 +5,12 @@ import { KeyboardArrowLeft } from "@mui/icons-material";
 import styles from "../../../../styles/pages/new_exam.module.scss";
 import { Stack, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
-import { DaysOfService, Details } from "@/components/templates";
+import { DaysOfService, Details, PaymentMethods } from "@/components/templates";
 
 const screens = {
   0: <Details />,
   1: <DaysOfService />,
+  // 2: <PaymentMethods />,
 };
 
 export default function Page() {

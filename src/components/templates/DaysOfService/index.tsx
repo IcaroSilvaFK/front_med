@@ -10,10 +10,16 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import "devextreme/dist/css/dx.light.css";
+import { Scheduler } from "devextreme-react/scheduler";
+import { Info } from "@mui/icons-material";
+import { locale, loadMessages } from "devextreme/localization";
+import ptMessages from "devextreme/localization/messages/pt.json";
+
+import { CardScheduling } from "@/components/molecules";
 
 import styles from "./styles.module.scss";
-import { CardScheduling } from "@/components/molecules";
-import { Info } from "@mui/icons-material";
+import { useEffect } from "react";
 
 const doctor = {
   avatar: faker.image.avatar(),
@@ -24,6 +30,11 @@ const doctor = {
 
 export function DaysOfService() {
   const weekDays = DateTimeUtil.genDaysOfWeek();
+
+  useEffect(() => {
+    loadMessages(ptMessages);
+    locale("pt-BR");
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -54,10 +65,29 @@ export function DaysOfService() {
             <Info />
           </Tooltip>
         </Stack>
-        <Stack direction="row" mt={2} justifyContent="space-between">
+        <Stack
+          direction="row"
+          alignItems="flex-start"
+          mt={2}
+          justifyContent="space-evenly"
+        >
           {weekDays.map((day) => (
             <CardScheduling key={day.toISOString()} day={day} />
           ))}
+        </Stack>
+        <Stack mt={2}>
+          <Scheduler
+            id="scheduler"
+            timeZone="America/Sao_Paulo"
+            views={["month", "week", "day"]}
+            defaultCurrentView="month"
+            height={600}
+            showAllDayPanel={true}
+            firstDayOfWeek={1}
+            startDayHour={8}
+            endDayHour={18}
+            dataSource={[]}
+          ></Scheduler>
         </Stack>
       </Card>
     </div>
